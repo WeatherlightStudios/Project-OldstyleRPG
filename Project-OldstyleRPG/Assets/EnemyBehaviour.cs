@@ -27,6 +27,8 @@ public class EnemyBehaviour : MonoBehaviour {
 		transform.position += targetDir * speed * Time.deltaTime;
 		direction = targetDir;
 		
+		transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
+		
 		if(health <= 0){
 			this.gameObject.SetActive(false);
 		}
