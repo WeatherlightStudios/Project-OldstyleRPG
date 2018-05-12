@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028346, g: 0.22571373, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 788821652}
   - component: {fileID: 788821651}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: DungeonGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,9 +142,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dungeonSizeX: 50
   dungeonSizeY: 50
-  m_min_sizeDivision: 4
-  m_PercentageTreshold: 1.25
+  m_min_sizeDivision: 15
+  m_PercentageTreshold: 1.2
   m_randomTreshold: 1
+  groundTile: {fileID: 1237115979827972, guid: 2bbd6f124ca29444fa28ef82e3f31e10, type: 2}
 --- !u!4 &788821652
 Transform:
   m_ObjectHideFlags: 0
@@ -152,7 +153,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 788821650}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.827787, y: -12.8399315, z: 26.926176}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
