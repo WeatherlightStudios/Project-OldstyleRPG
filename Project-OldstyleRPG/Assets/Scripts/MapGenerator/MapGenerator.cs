@@ -38,10 +38,15 @@ public class Leaf
 	//percentuale di spazziatura tra altezza e larghezza 
 	public float PercentageTreshold;
 	
-	public GameObject groundTile;
+	public GameObject roomBuilder;
+	public GameObject corridorBuilder;
 	
-	public static List<Vector3> positions = new List<Vector3>();
-	public static List<Vector2> sizes = new List<Vector2>();
+	//public static List<GameObject> dungeonPieces =  new List<GameObject>();
+	public static List<RoomInfo> roomInfos = new List<RoomInfo>();
+	public static List<CorridorInfo> corridorInfo = new List<CorridorInfo>();
+	
+	//public static List<Vector3> positions = new List<Vector3>();
+	//public static List<Vector2> sizes = new List<Vector2>();
 	
 	//inizializzazione della classe
 	public Leaf()
@@ -49,9 +54,9 @@ public class Leaf
 
 	}
 	
-	public void getList(out List<Vector3> _positions, out List<Vector2> _size){
-		_positions = positions;
-		_size = sizes;
+	public void getList(out List<RoomInfo> _roomInfo, out List<CorridorInfo> _corridorInfo){
+		_roomInfo = roomInfos;
+		_corridorInfo = corridorInfo;
 	}
 	
 	//Funzione che suddivide l'albero
@@ -128,12 +133,14 @@ public class Leaf
 			a.RandomTreshold = RandomTreshold;
 			a.min_sizeDivision = min_sizeDivision;
 			a.PercentageTreshold = PercentageTreshold;
-			a.groundTile = groundTile;
+			a.roomBuilder = roomBuilder;
+			a.corridorBuilder = corridorBuilder;
 			
 			b.RandomTreshold = RandomTreshold;
 			b.min_sizeDivision = min_sizeDivision;
 			b.PercentageTreshold = PercentageTreshold;
-			b.groundTile = groundTile;
+			b.roomBuilder = roomBuilder;
+			b.corridorBuilder = corridorBuilder;
 
 			//aggiunta dei figli
 			LeftChildren = a;
@@ -200,8 +207,13 @@ public class Leaf
 		newRoom.GetComponentInChildren<SpriteRenderer>().size = size2D;
 		 */
 		
-		positions.Add(position);
-		sizes.Add(size2D);
+		//GameObject newPiece = new GameObject();
+		//GenericRoomBuilder builder = newPiece.GetComponent<GenericRoomBuilder>();
+		RoomInfo newRoomInfo = new RoomInfo(position, size2D, 4);
+		roomInfos.Add(newRoomInfo);
+		
+		//positions.Add(position);
+		//sizes.Add(size2D);
 		
 		//GameObject ground = Instantiate(groundTile, position, Quaternion.identity);
 		//Gizmos.DrawCube(position, size);
@@ -237,12 +249,19 @@ public class Leaf
 			Vector3 centerPos = (from + to) / 2;
 			Vector2 size = new Vector2(to.x - from.x, to.z - from.z);
 			if(size.x == 0)
-				size.x = 0.5f;
+				size.x = 1;
 			if(size.y == 0)
-				size.y = 0.5f;
+				size.y = 1;
 			
-			positions.Add(centerPos);
-			sizes.Add(size);
+			
+			
+			//GameObject newPiece = corridorBuilder;
+			//GenericCorridorBuilder builder = newPiece.GetComponent<GenericCorridorBuilder>();
+			CorridorInfo newCorrInfo = new CorridorInfo(centerPos, size, 4);
+			corridorInfo.Add(newCorrInfo);
+			
+			//positions.Add(centerPos);
+			//sizes.Add(size);
 
 			if(!RightChildren.isHorizontalDiv)
 			{
@@ -302,12 +321,17 @@ public class MapGenerator : MonoBehaviour
 	public float m_PercentageTreshold;
 	public float m_randomTreshold;
 	
-	public GameObject groundTile;
+	public GameObject roomBuilder;
+	public GameObject corridorBuilder;
 	
 	Leaf m_root = new Leaf();
 	
-	public static List<Vector3> positions;
-	public static List<Vector2> sizes;
+	
+	public static List<RoomInfo> roomInfo;
+	public static List<CorridorInfo> corridorInfo;
+	
+	//public static List<Vector3> positions;
+	//public static List<Vector2> sizes;
 
 	void Start()
 	{
@@ -329,10 +353,19 @@ public class MapGenerator : MonoBehaviour
 		m_root.CheckRoom();
 		m_root.connectRooms();
 		
-		m_root.getList(out positions, out sizes);
-		for(int i = 0; i < positions.Count; i++){
-			GameObject newRoom = Instantiate(groundTile, positions[i], Quaternion.identity);
-			newRoom.GetComponentInChildren<SpriteRenderer>().size = sizes[i];
+		m_root.getList(out roomInfo, out corridorInfo);
+		for(int i = 0; i < corridorInfo.Count; i++){
+			GameObject newCorridor = Instantiate(corridorBuilder, corridorInfo[i].position, Quaternion.identity);
+			newCorridor.GetComponent<GenericCorridorBuilder>().info = corridorInfo[i];
+			//GenericRoomBuilder roomGenerator = newRoom.GetComponent<GenericRoomBuilder>();
+			//roomGenerator.info = new RoomInfo(positions[i], sizes[i], 4);
+			//newRoom.GetComponentInChildren<SpriteRenderer>().size = sizes[i];
+		}
+		for(int i = 0; i < roomInfo.Count; i++){
+			//print(roomInfo[i].size);
+			
+			GameObject newRoom = Instantiate(roomBuilder, roomInfo[i].position, Quaternion.identity);
+			newRoom.GetComponent<GenericRoomBuilder>().info = roomInfo[i];
 		}
 	}
 	
@@ -350,6 +383,7 @@ public class MapGenerator : MonoBehaviour
 		m_root.max_posY = dungeonSizeY;
 		m_root.RandomTreshold = m_randomTreshold;
 		
-		m_root.groundTile = this.groundTile;
+		m_root.roomBuilder = this.roomBuilder;
+		m_root.corridorBuilder = this.corridorBuilder;
 	}
 }

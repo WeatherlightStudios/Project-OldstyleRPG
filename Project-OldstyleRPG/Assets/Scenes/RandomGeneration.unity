@@ -113,6 +113,56 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &318277774
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4094928100835272, guid: 2bbd6f124ca29444fa28ef82e3f31e10, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094928100835272, guid: 2bbd6f124ca29444fa28ef82e3f31e10, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094928100835272, guid: 2bbd6f124ca29444fa28ef82e3f31e10, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094928100835272, guid: 2bbd6f124ca29444fa28ef82e3f31e10, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094928100835272, guid: 2bbd6f124ca29444fa28ef82e3f31e10, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094928100835272, guid: 2bbd6f124ca29444fa28ef82e3f31e10, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094928100835272, guid: 2bbd6f124ca29444fa28ef82e3f31e10, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094928100835272, guid: 2bbd6f124ca29444fa28ef82e3f31e10, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1237115979827972, guid: 2bbd6f124ca29444fa28ef82e3f31e10, type: 2}
+      propertyPath: m_Name
+      value: Room_Generic (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1237115979827972, guid: 2bbd6f124ca29444fa28ef82e3f31e10, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 2bbd6f124ca29444fa28ef82e3f31e10, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &788821650
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,10 +192,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dungeonSizeX: 50
   dungeonSizeY: 50
-  m_min_sizeDivision: 15
+  m_min_sizeDivision: 10
   m_PercentageTreshold: 1.2
   m_randomTreshold: 1
-  groundTile: {fileID: 1237115979827972, guid: 2bbd6f124ca29444fa28ef82e3f31e10, type: 2}
+  roomBuilder: {fileID: 1237115979827972, guid: 2bbd6f124ca29444fa28ef82e3f31e10,
+    type: 2}
+  corridorBuilder: {fileID: 1237115979827972, guid: 0c4a3a88718c77d43904967c4d395fb7,
+    type: 2}
 --- !u!4 &788821652
 Transform:
   m_ObjectHideFlags: 0
@@ -218,7 +271,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1577015654}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
