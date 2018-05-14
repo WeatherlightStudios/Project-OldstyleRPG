@@ -14,11 +14,11 @@ TextureImporter:
     21300018: Skirt_Purple
     21300020: Skirt_Green
     21300022: Bracelet_Rainbow
-    21300024: Ribbon_Blue
+    21300024: Ribbon_White
     21300026: Ribbon_Purple
     21300028: Ribbon_Green
     21300030: Ribbon_Red
-    21300032: items_16
+    21300032: Ribbon_Blue
     21300034: Ribbon_Yellow
     21300036: Dress_Blue
     21300038: Dress_Red
@@ -406,7 +406,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ribbon_Blue
+      name: Ribbon_White
       rect:
         serializedVersion: 2
         x: 0
@@ -486,7 +486,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: items_16
+      name: Ribbon_Blue
       rect:
         serializedVersion: 2
         x: 64

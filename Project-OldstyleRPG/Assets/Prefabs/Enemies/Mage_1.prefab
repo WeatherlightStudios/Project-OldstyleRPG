@@ -102,6 +102,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   projectile: {fileID: 1172030810089674, guid: 11b4140b77b32e241962ef0c7315023a, type: 2}
+  fine: {r: 1, g: 1, b: 1, a: 1}
+  damage: 10
   speed: 2
   health: 100
 --- !u!212 &212615025429221168
