@@ -22,7 +22,8 @@ public class GenericRoomBuilder : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		DeleteOldSafe();
-		BuildRoom();
+		if(info != null)
+			BuildRoom();
 	}
 	
 	// Update is called once per frame
@@ -37,7 +38,18 @@ public class GenericRoomBuilder : MonoBehaviour {
 		/// Ground
 		/// </summary>
 		GameObject ground = Instantiate(floorTile, info.position, Quaternion.identity, this.transform);
-		ground.GetComponentInChildren<MeshRenderer>().material.mainTextureScale = info.size;
+		MeshRenderer rendGround = ground.GetComponentInChildren<MeshRenderer>();
+		Material tempMat = new Material(rendGround.sharedMaterial);
+		tempMat.mainTextureScale = info.size;
+		rendGround.sharedMaterial = tempMat;
+		
+		/*
+		MeshRenderer rendGround = ground.GetComponentInChildren<MeshRenderer>();
+		Material tempMat = new Material(rendGround.sharedMaterial);
+		tempMat.mainTextureScale = info.size;
+		rendGround.sharedMaterial = tempMat;
+		 */
+		
 		//print("size: " + info.size + " pos: " + info.position);
 		ground.transform.localScale = new Vector3(info.size.x, 1 , info.size.y);
 		
@@ -60,17 +72,30 @@ public class GenericRoomBuilder : MonoBehaviour {
 		GameObject wall3Obj = Instantiate(wallTile, wall3, Quaternion.LookRotation(Vector3.right, Vector3.up), this.transform);
 		GameObject wall4Obj = Instantiate(wallTile, wall4, Quaternion.LookRotation(Vector3.left, Vector3.up), this.transform);
 		
+		
 		wall1Obj.transform.localScale = scaleFB;
-		wall1Obj.GetComponentInChildren<MeshRenderer>().material.mainTextureScale = sizeFB;
+		MeshRenderer rendWall1 = wall1Obj.GetComponentInChildren<MeshRenderer>();
+		tempMat = new Material(rendWall1.sharedMaterial);
+		tempMat.mainTextureScale = sizeFB;
+		rendWall1.sharedMaterial = tempMat;
 		
 		wall2Obj.transform.localScale = scaleFB;
-		wall2Obj.GetComponentInChildren<MeshRenderer>().material.mainTextureScale = sizeFB;
+		MeshRenderer rendWall2 = wall2Obj.GetComponentInChildren<MeshRenderer>();
+		tempMat = new Material(rendWall2.sharedMaterial);
+		tempMat.mainTextureScale = sizeFB;
+		rendWall2.sharedMaterial = tempMat;
 		
 		wall3Obj.transform.localScale = scaleLR;
-		wall3Obj.GetComponentInChildren<MeshRenderer>().material.mainTextureScale = sizeLR;		
+		MeshRenderer rendWall3 = wall3Obj.GetComponentInChildren<MeshRenderer>();
+		tempMat = new Material(rendWall3.sharedMaterial);
+		tempMat.mainTextureScale = sizeLR;
+		rendWall3.sharedMaterial = tempMat;
 		
 		wall4Obj.transform.localScale = scaleLR;
-		wall4Obj.GetComponentInChildren<MeshRenderer>().material.mainTextureScale = sizeLR;		
+		MeshRenderer rendWall4 = wall4Obj.GetComponentInChildren<MeshRenderer>();
+		tempMat = new Material(rendWall4.sharedMaterial);
+		tempMat.mainTextureScale = sizeLR;
+		rendWall4.sharedMaterial = tempMat;
 		
 		/*
 		wall1Obj.GetComponentInChildren<SpriteRenderer>().size = sizeFB;

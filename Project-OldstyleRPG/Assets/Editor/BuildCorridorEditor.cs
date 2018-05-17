@@ -10,10 +10,18 @@ public class BuildCorridorEditor : Editor {
 		
 		GenericCorridorBuilder roomBuilder = (GenericCorridorBuilder)target;
 		
+		GUILayout.BeginHorizontal();
+		
 		if(GUILayout.Button("Generate Room")){
 			roomBuilder.info = new CorridorInfo(roomBuilder.debugPosition, roomBuilder.debugSize, roomBuilder.debugHeight);
 			roomBuilder.DeleteOld();
 			roomBuilder.BuildCorridor();
 		}
+		
+		if(GUILayout.Button("Delete Childrens")){
+			roomBuilder.DeleteOld();
+		}
+		
+		GUILayout.EndHorizontal();
 	}
 }

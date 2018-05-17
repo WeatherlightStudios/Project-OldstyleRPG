@@ -10,10 +10,18 @@ public class BuildRoomEditor : Editor {
 		
 		GenericRoomBuilder roomBuilder = (GenericRoomBuilder)target;
 		
+		GUILayout.BeginHorizontal();
+		
 		if(GUILayout.Button("Generate Room")){
 			roomBuilder.info = new RoomInfo(roomBuilder.debugPosition, roomBuilder.debugSize, roomBuilder.debugHeight);
 			roomBuilder.DeleteOld();
 			roomBuilder.BuildRoom();
 		}
+		
+		if(GUILayout.Button("Empty Childrens")){
+			roomBuilder.DeleteOld();
+		}
+		
+		GUILayout.EndHorizontal();
 	}
 }
