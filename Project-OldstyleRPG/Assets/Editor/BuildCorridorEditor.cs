@@ -12,7 +12,7 @@ public class BuildCorridorEditor : Editor {
 		
 		GUILayout.BeginHorizontal();
 		
-		if(GUILayout.Button("Generate Room")){
+		if(GUILayout.Button("Generate Corridor")){
 			roomBuilder.info = new CorridorInfo(roomBuilder.debugPosition, roomBuilder.debugSize, roomBuilder.debugHeight);
 			roomBuilder.DeleteOld();
 			roomBuilder.BuildCorridor();

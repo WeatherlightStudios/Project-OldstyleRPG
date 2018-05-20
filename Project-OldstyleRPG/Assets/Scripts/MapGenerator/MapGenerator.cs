@@ -354,18 +354,18 @@ public class MapGenerator : MonoBehaviour
 		m_root.connectRooms();
 		
 		m_root.getList(out roomInfo, out corridorInfo);
+		for(int i = 0; i < roomInfo.Count; i++){
+			//print(roomInfo[i].size);
+			
+			GameObject newRoom = Instantiate(roomBuilder, roomInfo[i].position, Quaternion.identity);
+			newRoom.GetComponent<GenericRoomBuilder>().info = roomInfo[i];
+		}
 		for(int i = 0; i < corridorInfo.Count; i++){
 			GameObject newCorridor = Instantiate(corridorBuilder, corridorInfo[i].position, Quaternion.identity);
 			newCorridor.GetComponent<GenericCorridorBuilder>().info = corridorInfo[i];
 			//GenericRoomBuilder roomGenerator = newRoom.GetComponent<GenericRoomBuilder>();
 			//roomGenerator.info = new RoomInfo(positions[i], sizes[i], 4);
 			//newRoom.GetComponentInChildren<SpriteRenderer>().size = sizes[i];
-		}
-		for(int i = 0; i < roomInfo.Count; i++){
-			//print(roomInfo[i].size);
-			
-			GameObject newRoom = Instantiate(roomBuilder, roomInfo[i].position, Quaternion.identity);
-			newRoom.GetComponent<GenericRoomBuilder>().info = roomInfo[i];
 		}
 	}
 	
